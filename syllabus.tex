@@ -1,0 +1,140 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{termcal}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{multicol}
+\usepackage{parskip}
+
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+
+\newcommand{\mysec}[1]{\medskip\noindent\underline{\textbf{#1}}}
+
+\title{ENAS 773 MENG/EENG 443  \\ Fundamentals of Robot Modeling and Control}
+\author{Fall 2023}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\mysec{Description:}
+This course introduces fundamental concepts for modeling and controlling robotic systems. The course is divided into two components: Part 1 introduces mathematical tools for modeling and simulating complex robot dynamics. Part 2 formulates various ways to control robots through comprehensive analysis of dynamics and a deep dive into control theory.  Specific lecture topics will cover an introduction to variational calculus, state representation, kinematics and dynamics, manipulator equations, contact dynamics and collision detection, observability and controllability, control of fully actuated and underactuated robots, model-based methods for control, and control for manipulation and locomotion. 
+
+The course will focus on connecting mathematical topics with concrete algorithmic implementation where the mid-term project assignment has students model the dynamics of a robot of their choosing. Coding assignments throughout the semester will provide experience setting up and interfacing with URDFs, automatic differentiation math libraries in python, and algorithmic implementation of state-of-the-art robot control methods. Students taking this class will finish with a codebase and foundational knowledge for simulating and controlling general robotic systems. Special topic lectures will focus on recent developments in the field of robotics and highlight core research areas. A final class project will take place instead of a final exam where students will leverage the mid-term robot simulation to control a robot to perform a task of their choosing. 
+
+\mysec{Meeting Time:} TTh 4-5:25pm at HLH17 room 115
+
+\mysec{Office Hours:} TBD
+
+\mysec{Prerequisites:} The course is designed for incoming graduate students (and advanced undergraduates). Experience with differential equations, extensive linear algebra and numerical methods for solving ordinary differential equations skills is required. Functional and object-oriented coding experience in e.g., python, C/C++, is also required.
+
+Access to a computer is required, but no special software is needed. Online Colab notebooks will be used to ensure consistency in code-base and that software packages are maintained across machines. 
+
+
+\mysec{Instructors} \\ 
+\begin{tabular}{l l}
+	Prof. Ian Abraham & \textbf{Email:} \texttt{ian.abraham@yale.edu} \\
+	TF: Yilang Liu & \textbf{Email:} \texttt{yilang.liu@yale.edu}\\
+	ULA: Chris Ward & \textbf{Email:} \texttt{chris.ward@yale.edu}
+\end{tabular}
+
+\newpage
+
+
+\section*{Course Structure}
+
+\mysec{Learning Objectives:} 
+\begin{enumerate}[noitemsep]
+	\item Deep understanding of variational calculus and optimal control
+	\item Model and simulate robotic systems with constraints and contact dynamics
+	\item Pose optimization problems and solve for control solutions
+	\item Optimize trajectories and controllers that leverage robot models to perform specified tasks
+	\item Overview of state-of-the-art control methods (indirect and direct methods, model-predictive control, policy optimization, LQR/iLQR)
+\end{enumerate}
+
+
+\mysec{Lectures and Resources:} Occur two times a week. Lecture notes will be provided prior to the class. If possible, please bring the notes in and use them to follow along. The lecture will go over the notes and provide deeper insights on motivation and derivations as well as algorithmic implementation. 
+
+Course material will include select open-access books on robotics, dynamics, and control. Additionally, several academic papers will be recommended along with special topic lectures.  
+
+
+\mysec{Coding Assignments:} There will be a total of 10 coding assignments that build up tools necessary towards your midterm and final projects. The assignments will use \href{https://colab.research.google.com/?utm_source=scs-index}{Google Colab} Jupyter notebooks with a dedicated package software for the course. Submission of assignments will be done through canvas as a Jupyter notebook for which TF/ULA will run your code and grade on successful runs and completion of questions.
+
+\mysec{Midterm Project:} Students will leverage the concepts from the first part of the course to simulate a robot by developing their own multi-body contact dynamics simulator. The choice of robotic system is arbitrary, but must consistent of several degrees of freedom and require resolving contact or constraint dynamics. The simulator will serve as foundational code for the final project for which control will be introduced into the simulation. 
+
+\mysec{Final Project:} A short proposal outlining the project problem statement, goals, and measurable outcomes will be required before starting the final project. Feedback will be provided based on the project goals to ensure its viability and success by the course conclusion.  Projects can range from implementation and analysis of recent research papers on a simulated robot of your choosing, to novel robot tasks and control of manipulation, locomotion, or your own research question. A final project report in the form of a short academic robotics conference paper will be required upon completion as well as a presentation (with robot videos, or live robot demos). Grading will consist of how well the problem is articulated, the challenges and assumptions are highlighted, and the thoroughness of the subsequent analysis and benchmarking.
+
+
+\mysec{Assessment \& Grading}
+
+\begin{enumerate}[noitemsep]
+	\item Participation 5\%
+	\item Coding assignments 25\%
+	\item Midterm project 25\%
+	\item Final project 35 \%
+\end{enumerate}
+
+
+Assessment of the course serves to 1) have engaged discourse on ideas, mathematical concepts, and rigorously work through assumptions; and 2) provide hands-on coding experience that connects learned mathematical concepts to practical implementation on robots. The final project (and requisite proposal, presentation, and report) serves to prepare students to formulate proper problem statements in robotics, conduct appropriate benchmarks and evaluations, and clearly present and articulate challenges, research questions, and results. 
+
+\section*{Schedule}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+	\begin{tabular}{|c|c|c|c|}
+	\hline
+	\rowcolor[HTML]{C0C0C0} 
+	Week                 & Date & Topic                                                                                                                    & Assignments                                                             \\ \hline
+						 &      & Course Intro, Robotics and Control Systems                                                                               & HW1 Out                                                                 \\ \cline{2-4} 
+	\multirow{-2}{*}{1}  &      & Variational Calc. I: Norms, vector spaces                                                                                &                                                                         \\ \hline
+						 &      & Variational Calc. II: Directional derivatives                                                                            & \begin{tabular}[c]{@{}c@{}}HW1 Due\\ HW2 Out\end{tabular}               \\ \cline{2-4} 
+	\multirow{-2}{*}{2}  &      & Geometry I: Rotations, twists, wrenches                                                                                  &                                                                         \\ \hline
+						 &      & Geometry II: Jacobians, kinematics                                                                                       & \begin{tabular}[c]{@{}c@{}}HW2 Due\\ HW3 Out\end{tabular}               \\ \cline{2-4} 
+	\multirow{-2}{*}{3}  &      & Dynamics I: Euler-Lagrange equation                                                                                      &                                                                         \\ \hline
+						 &      & \begin{tabular}[c]{@{}c@{}}Dynamics II: E-L Generalization to transforms, \\ URDFs, integration, simulation\end{tabular} & \begin{tabular}[c]{@{}c@{}}HW3 Due\\ HW4 Out\end{tabular}               \\ \cline{2-4} 
+	\multirow{-2}{*}{4}  &      & Dynamics III: Constraints                                                                                                &                                                                         \\ \hline
+						 &      & Dynamics IV: Contact                                                                                                     & \begin{tabular}[c]{@{}c@{}}HW4 Due\\ HW5 Out\end{tabular}               \\ \cline{2-4} 
+	\multirow{-2}{*}{5}  &      & Practical considerations in simulation                                                                                   &                                                                         \\ \hline
+						 &      & \begin{tabular}[c]{@{}c@{}}Refresher on control systems: Feedback \\ and feedforward control\end{tabular}                & \begin{tabular}[c]{@{}c@{}}HW5 Due\\ Midterm Out\end{tabular}           \\ \cline{2-4} 
+	\multirow{-2}{*}{6}  &      & Feedback linearization and operational space                                                                             &                                                                         \\ \hline
+						 &      & Underactuated Control                                                                                                    &                                                                         \\ \cline{2-4} 
+	\multirow{-2}{*}{7}  &      & Anatomy of an Optimal Control Problem                                                                                    &                                                                         \\ \hline
+						 &      & Conditions of optimality: Pontryagin's Maximum Principle                                                                 & \begin{tabular}[c]{@{}c@{}}Midterm Due\\ HW6 Out\end{tabular}           \\ \cline{2-4} 
+	\multirow{-2}{*}{8}  &      & Linear Quadratic Regulator Problem: The LQR Controller                                                                   &                                                                         \\ \hline
+						 &      & \begin{tabular}[c]{@{}c@{}}Iterative LQR and \\ Differential Dynamic Programming\end{tabular}                            & \begin{tabular}[c]{@{}c@{}}HW6 Due\\ HW7 Out\end{tabular}               \\ \cline{2-4} 
+	\multirow{-2}{*}{9}  &      & Direct Methods for Control                                                                                               &                                                                         \\ \hline
+						 &      & Model-Predictive Control                                                                                                 & \begin{tabular}[c]{@{}c@{}}HW7 Due\\ HW8 Out\\ Project Out\end{tabular} \\ \cline{2-4} 
+	\multirow{-2}{*}{10} &      & Control for Manipulation                                                                                                 &                                                                         \\ \hline
+						 &      & Control for Locomotion                                                                                                   & HW8 Due                                                                 \\ \cline{2-4} 
+	\multirow{-2}{*}{11} &      & System Identification \& Uncertainty                                                                                     &                                                                         \\ \hline
+	12                   &      & Estimation and Filtering                                                                                                 &                                                                         \\ \hline
+						 &      & Sample-Based Control                                                                                                     &                                                                         \\ \hline
+	13                   &      & \begin{tabular}[c]{@{}c@{}}Uncertainty Reducing Control:\\ Belief-space planning\end{tabular}                            &                                                                         \\ \hline
+						 &      & Advanced Topics I: Exploration                                                                                           &                                                                         \\ \hline
+						 &      & \begin{tabular}[c]{@{}c@{}}Advanced Topics II: Objective design \\ and practical considerations\end{tabular}             &                                                                         \\ \cline{2-4} 
+	\multirow{-2}{*}{14} &      & Course Recap and Project Advising                                                                                        & Project Due                                                             \\ \hline
+						 &      & Final Project Presentation                                                                                               &                                                                         \\ \cline{2-4} 
+	\multirow{-2}{*}{15} &      &                                                                                                                          &                                                                         \\ \hline
+	\end{tabular}
+	\end{table}
+
+\clearpage
+\section*{Course Policies}
+
+\mysec{Late Assignments:} Notice of late assignments must be given to the instructor and TF/ULA before the due date. Students will be provided with a budget of 3 late days which they can spend however they want before turning in the assignment. The instructor must be given notice for when and how much of the budget is to be used. Any late assignments beyond the budget will be penalized 10\% of the final grade per day late. 
+
+\mysec{Grading Disputes:} Grading will primarily be done by TF/ULA (aside from midterm and final projects). Any student wishing to dispute the grade can do so formally in writing and sent to the instructor. The instructor will re-grade the whole assignment to ensure fairness in the grading process, but the final resulting grade (whether higher or lower) will be fixed and final.  
+
+
+\mysec{Academic Integrity:} Academic integrity is a core value of the university and will be upheld within this course by its students. While collaboration is encouraged, this does not include sharing or copying of code in any way. Each student is required to submit coding solutions independently. Project proposal, presentations, and report should be done independently. Any student wishing to collaborate in a team for a project should meet with me early on with the idea, how each member of the group will play a role, and how each project report will differ within the project. 
+
+
+\end{document}
